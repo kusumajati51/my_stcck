@@ -47,17 +47,13 @@ class RegistrationActivity : AppCompatActivity() {
     @Throws(Exception::class)
     private fun register(){
         mProgressDialog.show()
-        try {
+
             Fuel.post(registerURL, listOf("name" to name!!.text.toString(),
                 "email" to email!!.text.toString(),
                 "no_hp" to phone_number!!.text.toString(),
                 "password" to password!!.text.toString(),
                 "password_confirmation" to password_conrimation!!.text.toString())
             ).responseJson { request, response, result ->
-//                val getResponse:String = result.get().content;
-//                Log.d("plzzzzz", getResponse)
-//                val jObject = JSONObject(getResponse)
-//                mProgressDialog.dismiss()
                 when(result){
                     is Result.Failure ->{
                         val ex = result.getException()
@@ -66,29 +62,19 @@ class RegistrationActivity : AppCompatActivity() {
                         println(ex)
                     }
                     is Result.Success ->{
-                        val data = result.get()
-                        Toast.makeText(applicationContext, data.content,Toast.LENGTH_LONG).show()
+                        val data = result.get().content
+                        val jObject = JSONObject(data)
+                        Toast.makeText(applicationContext, jObject.toString(),Toast.LENGTH_LONG).show()
                         println(data)
                     }
                 }
                 mProgressDialog.dismiss()
 
             }
-        }catch (e: Exception){
-            e.printStackTrace()
-            Toast.makeText(applicationContext,e.message,Toast.LENGTH_SHORT).show()
-        }
-        catch (f: FuelError) {
-            f.printStackTrace()
-            Toast.makeText(applicationContext,f.message,Toast.LENGTH_SHORT).show()
-        }
-        finally {
-
-        }
     }
 
     fun saveInfo(jObject: JSONObject){
-
+        val nama = jObject.getString("name")
     }
 
 
