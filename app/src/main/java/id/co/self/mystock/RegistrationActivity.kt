@@ -22,9 +22,8 @@ import java.lang.Exception
 import java.nio.charset.Charset
 
 class RegistrationActivity : AppCompatActivity() {
-    internal var registerURL = "http://192.168.43.223:3000/api/v1/register"
     lateinit var pref: PreferenceHelper
-    val regTask = 1
+
     lateinit var mProgressDialog: ProgressDialog
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
