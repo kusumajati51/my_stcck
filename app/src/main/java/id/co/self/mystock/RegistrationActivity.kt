@@ -15,6 +15,7 @@ import com.github.kittinunf.fuel.android.extension.responseJson
 import com.github.kittinunf.fuel.core.FuelError
 import com.github.kittinunf.result.Result
 import id.co.self.mystock.session.PreferenceHelper
+import id.co.self.mystock.url.LinkApi
 import kotlinx.android.synthetic.main.activity_registration.*
 import org.json.JSONObject
 import java.lang.Exception
@@ -48,7 +49,7 @@ class RegistrationActivity : AppCompatActivity() {
     private fun register(){
         mProgressDialog.show()
 
-            Fuel.post(registerURL, listOf("name" to name!!.text.toString(),
+            Fuel.post(LinkApi.registerURL, listOf("name" to name!!.text.toString(),
                 "email" to email!!.text.toString(),
                 "no_hp" to phone_number!!.text.toString(),
                 "password" to password!!.text.toString(),
@@ -64,7 +65,10 @@ class RegistrationActivity : AppCompatActivity() {
                     is Result.Success ->{
                         val data = result.get().content
                         val jObject = JSONObject(data)
-                        Toast.makeText(applicationContext, jObject.toString(),Toast.LENGTH_LONG).show()
+                        Toast.makeText(applicationContext, jObject.optString("message"),Toast.LENGTH_LONG).show()
+                        val intent = Intent(this@RegistrationActivity, MainActivity::class.java)
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+                        saveInfo(jObject)
                         println(data)
                     }
                 }
@@ -74,7 +78,12 @@ class RegistrationActivity : AppCompatActivity() {
     }
 
     fun saveInfo(jObject: JSONObject){
-        val nama = jObject.getString("name")
+        pref!!.putsLogin(true)
+        if(jObject.getInt("status")== 1){
+            val data:JSONObject = jObject.getJSONObject("data")
+            pref!!.putToken(data.optString("token"))
+            pref!!.putName(data.optString("name"))
+        }
     }
 
 
