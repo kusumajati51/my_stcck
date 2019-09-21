@@ -46,4 +46,10 @@ class PreferenceHelper(private val context:Context) {
         return app_prefs.getString(NAME,"")
     }
 
+    fun delete(){
+        val delete = app_prefs.edit()
+        delete.clear()
+        delete.commit()
+    }
+
 }

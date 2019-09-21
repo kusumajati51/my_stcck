@@ -4,6 +4,8 @@
     package="id.co.self.mystock">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
 
     <application
@@ -16,7 +18,7 @@
         tools:ignore="GoogleAppIndexingWarning">
         <activity android:name="id.co.self.mystock.LoginActivity" />
         <activity android:name="id.co.self.mystock.MainActivity" />
-        <activity android:name="id.co.self.mystock.AddTypeOfProduct"/>
+        <activity android:name="id.co.self.mystock.AddCategory"/>
         <activity android:name="id.co.self.mystock.RegistrationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

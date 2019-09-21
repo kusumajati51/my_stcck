@@ -29,18 +29,25 @@ class RegistrationActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registration)
         mProgressDialog = ProgressDialog(this@RegistrationActivity)
-        mProgressDialog.setMessage("Halooo")
+        mProgressDialog.setMessage("Loading...")
         pref = PreferenceHelper(this)
         if(pref!!.getIsLogin()){
             val intent = Intent(applicationContext, MainActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK )
             startActivity(intent)
         }
+    }
+
+    override fun onStart() {
+        super.onStart()
 
         btn.setOnClickListener {
-
             register()
+        }
 
+        tvlogin.setOnClickListener {
+            val intent = Intent(this@RegistrationActivity, LoginActivity::class.java)
+            startActivity(intent)
         }
     }
 
@@ -67,6 +74,7 @@ class RegistrationActivity : AppCompatActivity() {
                         Toast.makeText(applicationContext, jObject.optString("message"),Toast.LENGTH_LONG).show()
                         val intent = Intent(this@RegistrationActivity, MainActivity::class.java)
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+                        startActivity(intent)
                         saveInfo(jObject)
                         println(data)
                     }

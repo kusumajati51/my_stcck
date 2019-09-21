@@ -8,4 +8,8 @@ object LinkApi {
     val registerURL = url + "register"
     val loginUrl = url + "login"
 
+    /* category url */
+    val categoryIndex = url + "category/index"
+    val categoryBaru = url + "category/baru"
+
 }
