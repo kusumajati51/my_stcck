@@ -11,7 +11,7 @@
         android:id="@+id/addType"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Tambah Product"
+        android:text="Tambah Category"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -23,10 +23,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Tambah Caetgory"
-        app:layout_constraintEnd_toEndOf="@+id/button"
-        app:layout_constraintStart_toStartOf="@+id/button"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
+        android:text="Tambah Product"
+        app:layout_constraintEnd_toEndOf="@id/addType"
+        app:layout_constraintStart_toStartOf="@id/addType"
+        app:layout_constraintTop_toBottomOf="@id/addType" />
 
     <Button
         android:id="@+id/delete"
@@ -34,7 +34,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Logout"
-        app:layout_constraintEnd_toEndOf="@+id/button2"
-        app:layout_constraintStart_toStartOf="@+id/button2"
-        app:layout_constraintTop_toBottomOf="@+id/button2" />
+        app:layout_constraintEnd_toEndOf="@id/addProduct"
+        app:layout_constraintStart_toStartOf="@id/addProduct"
+        app:layout_constraintTop_toBottomOf="@id/addProduct" />
 </androidx.constraintlayout.widget.ConstraintLayout>

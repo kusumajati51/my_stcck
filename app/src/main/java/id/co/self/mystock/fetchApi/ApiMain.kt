@@ -1,8 +1,7 @@
 package id.co.self.mystock.fetchApi
 
-import android.app.Application
 import id.co.self.mystock.BuildConfig
-import id.co.self.mystock.url.LinkApi
+import id.co.self.mystock.fetchApi.url.LinkApi
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit

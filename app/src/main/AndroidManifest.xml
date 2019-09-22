@@ -4,9 +4,8 @@
     package="id.co.self.mystock">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.CAMERA"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -16,10 +15,23 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name="id.co.self.mystock.LoginActivity" />
-        <activity android:name="id.co.self.mystock.MainActivity" />
-        <activity android:name="id.co.self.mystock.AddCategory"/>
-        <activity android:name="id.co.self.mystock.RegistrationActivity">
+        <activity android:name=".AddProduct"></activity>
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="id.co.self.mystock.fileprovider"
+            android:enabled="true"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_phats" />
+        </provider>
+
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".MainActivity" />
+        <activity android:name=".AddCategory" />
+        <activity android:name=".RegistrationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

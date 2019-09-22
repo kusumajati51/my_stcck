@@ -1,25 +1,18 @@
 package id.co.self.mystock
 
 import android.app.ProgressDialog
-import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.view.ActionMode
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.widget.DialogTitle
 import com.github.kittinunf.fuel.Fuel
 import com.github.kittinunf.fuel.android.extension.responseJson
-import com.github.kittinunf.fuel.core.FuelError
 import com.github.kittinunf.result.Result
 import id.co.self.mystock.session.PreferenceHelper
-import id.co.self.mystock.url.LinkApi
+import id.co.self.mystock.fetchApi.url.LinkApi
 import kotlinx.android.synthetic.main.activity_registration.*
 import org.json.JSONObject
 import java.lang.Exception
-import java.nio.charset.Charset
 
 class RegistrationActivity : AppCompatActivity() {
     lateinit var pref: PreferenceHelper

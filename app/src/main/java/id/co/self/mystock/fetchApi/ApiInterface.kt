@@ -7,13 +7,13 @@ import retrofit2.http.Headers
 
 interface ApiInterface {
 
-    @Headers("Content-Type: multipart/form-data")
+//    @Headers("Content-Type: multipart/form-data")
     @Multipart
     @POST("category/baru")
     fun createNewCategory(
         @Header("Authorization") token: String,
         @Part multipart: MultipartBody.Part,
-        @Part hashMap: Map<String, RequestBody>): Call<ResponseBody>
+        @PartMap hashMap: HashMap<String, RequestBody>): Call<ResponseBody>
 
 
 }

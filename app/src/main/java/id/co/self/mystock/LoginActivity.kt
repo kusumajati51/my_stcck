@@ -8,9 +8,8 @@ import android.widget.Toast
 import com.github.kittinunf.fuel.Fuel
 import com.github.kittinunf.fuel.android.extension.responseJson
 import com.github.kittinunf.result.Result
-import com.google.gson.Gson
 import id.co.self.mystock.session.PreferenceHelper
-import id.co.self.mystock.url.LinkApi
+import id.co.self.mystock.fetchApi.url.LinkApi
 import kotlinx.android.synthetic.main.activity_login.*
 import org.json.JSONObject
 
@@ -57,6 +56,8 @@ class LoginActivity : AppCompatActivity() {
                     is Result.Success ->{
                         val jObject = result.get().obj()
                         Toast.makeText(this, jObject.toString(),Toast.LENGTH_LONG).show()
+                        val intent = Intent(this@LoginActivity,
+                            MainActivity::class.java)
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
                         startActivity(intent)
                         saveData(jObject)

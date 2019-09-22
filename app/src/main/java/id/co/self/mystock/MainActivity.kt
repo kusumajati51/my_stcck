@@ -43,7 +43,9 @@ class MainActivity : AppCompatActivity() {
         }
 
         addProduct.setOnClickListener {
-
+            val intent = Intent(this@MainActivity, AddProduct::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+            startActivity(intent)
         }
 
 
