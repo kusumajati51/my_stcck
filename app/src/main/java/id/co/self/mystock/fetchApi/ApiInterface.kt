@@ -15,5 +15,12 @@ interface ApiInterface {
         @Part multipart: MultipartBody.Part,
         @PartMap hashMap: HashMap<String, RequestBody>): Call<ResponseBody>
 
+    @Multipart
+    @POST("product/baru")
+    fun createNewProduct(
+        @Header("Authorization") token:String,
+        @Part multipart: MultipartBody.Part,
+        @PartMap hashMap: HashMap<String, RequestBody>): Call<ResponseBody>
+
 
 }

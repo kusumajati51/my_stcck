@@ -1,98 +1,117 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".AddProduct">
+        android:orientation="vertical">
 
-        <ImageView
-            android:id="@+id/poto_category"
-            android:layout_width="230dp"
-            android:layout_height="230dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0"
-            app:srcCompat="@mipmap/ic_launcher" />
-
-        <EditText
-            android:id="@+id/product_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:hint="Product Name"
-            app:layout_constraintEnd_toEndOf="@+id/poto_category"
-            app:layout_constraintStart_toStartOf="@+id/poto_category"
-            app:layout_constraintTop_toBottomOf="@+id/poto_category" />
-
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Category"
-            app:layout_constraintEnd_toEndOf="@+id/product_name"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/product_name"
-            app:layout_constraintTop_toBottomOf="@+id/product_name" />
-
-        <Spinner
-            android:id="@+id/product_spinner"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="@+id/product_name"
-            app:layout_constraintStart_toStartOf="@+id/textView"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
+        <ScrollView
+            android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:gravity="center|center_vertical"
-            android:text="Rp. "
-            android:textColor="#000"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="@+id/product_price"
-            app:layout_constraintStart_toStartOf="@+id/product_spinner"
-            app:layout_constraintTop_toTopOf="@+id/product_price" />
+            android:layout_weight="1">
 
-        <EditText
-            android:id="@+id/product_price"
-            android:layout_width="0dp"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context=".AddProduct">
+
+                <ImageView
+                    android:id="@+id/poto_category"
+                    android:layout_width="230dp"
+                    android:layout_height="230dp"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginBottom="8dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0"
+                    app:srcCompat="@mipmap/ic_launcher" />
+
+                <EditText
+                    android:id="@+id/product_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:hint="Product Name"
+                    app:layout_constraintEnd_toEndOf="@+id/poto_category"
+                    app:layout_constraintStart_toStartOf="@+id/poto_category"
+                    app:layout_constraintTop_toBottomOf="@+id/poto_category" />
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Category"
+                    app:layout_constraintEnd_toEndOf="@+id/product_name"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="@+id/product_name"
+                    app:layout_constraintTop_toBottomOf="@+id/product_name" />
+
+                <Spinner
+                    android:id="@+id/product_spinner"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="@+id/product_name"
+                    app:layout_constraintStart_toStartOf="@+id/textView"
+                    app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:gravity="center|center_vertical"
+                    android:text="Rp. "
+                    android:textColor="#000"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/product_price"
+                    app:layout_constraintStart_toStartOf="@+id/product_spinner"
+                    app:layout_constraintTop_toTopOf="@+id/product_price" />
+
+                <EditText
+                    android:id="@+id/product_price"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:ems="10"
+                    android:inputType="number"
+                    android:hint="Price"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/product_spinner"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toEndOf="@+id/textView2"
+                    app:layout_constraintTop_toBottomOf="@+id/product_spinner"
+                    app:layout_constraintVertical_bias="0.0" />
+
+                <EditText
+                    android:id="@+id/product_quantity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:ems="10"
+                    android:inputType="number"
+                    android:hint="Quantity"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/product_price"
+                    app:layout_constraintStart_toStartOf="@+id/textView2"
+                    app:layout_constraintTop_toBottomOf="@+id/product_price"
+                    app:layout_constraintVertical_bias="0.0" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+
+        <Button
+            android:id="@+id/save"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:ems="10"
-            android:inputType="number"
-            android:hint="Price"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/product_spinner"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/textView2"
-            app:layout_constraintTop_toBottomOf="@+id/product_spinner"
-            app:layout_constraintVertical_bias="0.0" />
+            android:text="Button" />
 
-        <EditText
-            android:id="@+id/product_quantity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:ems="10"
-            android:inputType="number"
-            android:hint="Quantity"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/product_price"
-            app:layout_constraintStart_toStartOf="@+id/textView2"
-            app:layout_constraintTop_toBottomOf="@+id/product_price"
-            app:layout_constraintVertical_bias="0.0" />
+    </LinearLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

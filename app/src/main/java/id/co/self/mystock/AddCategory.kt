@@ -68,8 +68,10 @@ import kotlin.collections.HashMap
                     ||checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
                     == PackageManager.PERMISSION_DENIED)
                 {
-                    val permission = arrayOf(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                    val permission = arrayOf(Manifest.permission.CAMERA,
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE)
                     requestPermissions(permission, PERMISSION_CODE)
+
                 }
                 else{
                     //permission already granted
@@ -85,11 +87,8 @@ import kotlin.collections.HashMap
                 name_category.setError("Silahkan isi nama anda")
                 return@setOnClickListener
             }
-            if(TextUtils.isEmpty(path)){
-                Toast.makeText(this@AddCategory,"Anda Belum Memasukan gambar category",
-                    Toast.LENGTH_LONG).show()
-            }
-            mut.put("name",RequestBody.create(null,name))
+
+            mut["name"] = RequestBody.create(null,name)
             putData(pref.getToken().toString(),partFile,mut)
         }
 
@@ -102,7 +101,7 @@ import kotlin.collections.HashMap
         grantResults: IntArray){
         when(requestCode){
             PERMISSION_CODE -> {
-                if (grantResults.size > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED){
                     //permission from popup was granted
                     camera()
                 }
@@ -115,10 +114,9 @@ import kotlin.collections.HashMap
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-            //set image captured to image view
-           /* val imageBitmap = data!!.extras.get("data") as Bitmap
-            poto_category.setImageBitmap(imageBitmap)*/
-            if(requestCode == IMAGE_CAPTURE_CODE){
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if(requestCode == IMAGE_CAPTURE_CODE){
                 val options = RequestOptions().centerCrop()
                     .placeholder(R.drawable.ic_launcher_background)
                 bitmap = BitmapFactory.decodeFile(path)
@@ -163,7 +161,8 @@ import kotlin.collections.HashMap
          }
      }
 
-     private fun putData(token: String,multipartBody: MultipartBody.Part, hashMap: HashMap<String, RequestBody>){
+     private fun putData(token: String,multipartBody: MultipartBody.Part,
+                         hashMap: HashMap<String, RequestBody>){
          apiInterface.createNewCategory(token,multipartBody,hashMap).enqueue(object : Callback<ResponseBody>{
              override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
                  try {
@@ -181,7 +180,7 @@ import kotlin.collections.HashMap
              }
 
              override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
-                 TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                 Toast.makeText(this@AddCategory, t.message,Toast.LENGTH_LONG).show()
              }
 
          })
